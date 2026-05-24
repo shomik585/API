@@ -26,10 +26,10 @@ def random_user_agent():
 # -------------------- AnimePahe Class --------------------
 class AnimePahe:
     def __init__(self):
-        self.base = "https://animepahe.com"
+        self.base = "https://animepahe.pw"
         self.headers = {
             "User-Agent": random_user_agent(),
-            "Referer": "https://animepahe.com/",
+            "Referer": "https://animepahe.pw/",
         }
         self.session = tls_client.Session(client_identifier="chrome_120")
 
@@ -234,7 +234,7 @@ async def api_resolve_kwik(url: str):
 @app.get("/debug")
 async def debug():
     try:
-        r = await pahe.get("https://animepahe.com/api?m=search&q=naruto")
+        r = await pahe.get("https://animepahe.pw/api?m=search&q=naruto")
         return {"status": r.status_code, "text": r.text[:500]}
     except Exception as e:
         return {"error": str(e)}
