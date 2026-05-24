@@ -230,3 +230,11 @@ async def api_resolve_kwik(url: str):
         return {"m3u8": m3u8}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/debug")
+async def debug():
+    try:
+        r = await pahe.get("https://animepahe.com/api?m=search&q=naruto")
+        return {"status": r.status_code, "text": r.text[:500]}
+    except Exception as e:
+        return {"error": str(e)}
